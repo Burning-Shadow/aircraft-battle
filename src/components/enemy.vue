@@ -9,12 +9,15 @@ import { PropType } from "vue";
 import enemyImg from "../assets/enemy.png";
 import { Enemy } from "../game/enemy";
 
-defineProps({
+const { enemy } = defineProps({
   enemy: {
     type: Object as PropType<Enemy>,
     required: true,
   },
 });
+
+enemy.width = 100;
+enemy.height = 100;
 </script>
 
 <style scoped></style>

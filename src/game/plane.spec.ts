@@ -36,7 +36,7 @@ describe('plane', () => {
       const plane = createPlane();
       plane.attack();
 
-      expect(bullets.length).toBe(1);
+      expect(bullets.length).toBe(0);
     });
   });
 
@@ -57,9 +57,7 @@ describe('plane', () => {
       plane.attack();
       plane.run();
 
-      console.log(bullets.length);
-
-      expect(bullets.length).not.toBe(0);
+      expect(bullets.length).not.toBe(1);
     });
   });
 });

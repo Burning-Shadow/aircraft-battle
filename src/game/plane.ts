@@ -14,7 +14,7 @@ export interface Plane {
 
 const defaultOptions = {
   x: 0,
-  y: 0,
+  y: 400,
   speed: 5,
 };
 
@@ -51,7 +51,12 @@ function initAttack(plane, bullets) {
     bullet.y = plane.y + offsetY;
     bullet.border = 0;
     bullet.onDestory = () => {
-      const index = bullets.indexOf(bullet);
+      console.log(`bullets = ${bullets.toString()}`);
+      console.log(`bullet = ${bullet.toString()}`);
+      const bulletsStr = (bullets).map(_ => JSON.stringify(_));
+      const bulletStr = JSON.stringify(bullet);
+      const index = bulletsStr.indexOf(bulletStr);
+      // const index = bullets.indexOf(bullet);
       bullets.splice(index, 1);
     };
 

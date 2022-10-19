@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Enemy, initEnemys, runEnemys } from './enemy';
 
 describe('Enemy', () => {
@@ -15,6 +15,8 @@ describe('Enemy', () => {
     const enemys = [];
     initEnemys(enemys);
 
+    console.log(enemys.toString());
+
     expect(enemys.length).toBe(1);
   });
 
@@ -26,5 +28,17 @@ describe('Enemy', () => {
     runEnemys(enemys);
 
     expect(enemy.y).toBe(2);
+  });
+
+  it('每2s创建一个敌军', () => {
+    vi.useFakeTimers();
+    const enemys = [];
+    initEnemys(enemys);
+
+    // 2000
+    vi.advanceTimersByTime(4000);
+
+    expect(enemys.length).toBe(3);
+    vi.restoreAllMocks();
   });
 });

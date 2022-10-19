@@ -2,10 +2,12 @@
 import { Application, PlaneGeometry } from 'pixi.js';
 import { Bullet } from './bullet';
 import { Enemy, initEnemys, runEnemys } from './enemy';
+import { fighting } from './fighting';
 import { setupPlane } from './plane';
 export * from './plane';
 export * from './bullet';
 export * from './enemy';
+export * from './fighting';
 
 function mainTricker(plane, enemys) {
   game.ticker.add(() => {
@@ -27,6 +29,7 @@ export function initGame(plane, bullets: Bullet[], enemys: Enemy[]) {
   initEnemys(enemys);
 
   mainTricker(plane, enemys);
+  fighting(plane, enemys);
 
   return { plane: _plane, bullets, enemys };
 };
